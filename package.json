@@ -1,0 +1,23 @@
+{
+  "name": "stubbs-bot",
+  "version": "1.0.0",
+  "description": "A Discord helper bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreadnoughtsix/stubbs-bot.git"
+  },
+  "author": "Clarenz James Caba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dreadnoughtsix/stubbs-bot/issues"
+  },
+  "homepage": "https://github.com/dreadnoughtsix/stubbs-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.3.1",
+    "discord.js-commando": "^0.9.0"
+  }
+}
