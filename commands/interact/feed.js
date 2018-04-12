@@ -24,10 +24,11 @@ module.exports = class FeedCommand extends Command {
     run(message, {food}) {
         let returnMsg = '';
         let interval = 1000;
+        const MAX_FOOD_COUNT = 5;
 
-        if (foodCount == 1) {
+        if (foodCount == MAX_FOOD_COUNT) {
             returnMsg += 'I need to poop now **-runs to the toilet-**';
-
+            foodCount = 0;
         } else if (!food) {
             returnMsg += 'Oh, you don\'t have any food for me? **-cries-**';
 
