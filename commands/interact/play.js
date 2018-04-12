@@ -1,5 +1,5 @@
 const {Command} = require('discord.js-commando');
-const {RPSGame} = require('./games/rps.js');
+const RPSGame = require('./games/rps.js');
 
 module.exports = class PlayCommand extends Command {
     constructor(client) {
@@ -31,11 +31,11 @@ module.exports = class PlayCommand extends Command {
         let responseMessage = '';
         if (game == 'rps') {
 
-            RPSGame rps = new RPSGame();
+            const rps = new RPSGame();
             responseMessage += rps.getDecision(gameInput);
 
             setTimeout(function () {
-                message.say(responseMessage + botResponse[decision] + ". " + gameOutput[gameDecision]);
+                message.say(responseMessage);
             }, 1000);
         } else if (game == 'coinflip') {
             let responseMsg = 'I flipped ';
