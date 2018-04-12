@@ -1,4 +1,5 @@
 const {Command} = require('discord.js-commando');
+let {feed: feedConfig} = require('../../config.json');
 let foodCount = 0;
 
 module.exports = class FeedCommand extends Command {
@@ -20,23 +21,16 @@ module.exports = class FeedCommand extends Command {
             ]
         });
 
-        this.VALID_FOODS = [
-            'beef',
-            'chicken',
-            'chocolate',
-            'dog treats',
-            'food',
-            'french vanilla',
-            'pork',
-        ];
+        feedConfig = feedConfig || {};
+        this.VALID_FOODS = feedConfig.validFoods || [];
+        this.MAX_FOOD_COUNT = feedConfig.maxFoodCount || 5;
     }
 
     run(message, {food}) {
         let returnMsg = '';
         let interval = 1000;
-        const MAX_FOOD_COUNT = 5;
 
-        if (foodCount == MAX_FOOD_COUNT) {
+        if (foodCount == this.MAX_FOOD_COUNT) {
             returnMsg += 'I need to poop now **-runs to the toilet-**';
             foodCount = 0;
         } else if (!food) {
