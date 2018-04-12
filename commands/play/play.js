@@ -1,8 +1,7 @@
 const {Command} = require('discord.js-commando');
-var testMsg = '(TESTING: play command group)';
-let foodCount = 0;
+const {RPSGame} = require('./rps.js');
 
-module.exports = class RPSCommand extends Command {
+module.exports = class PlayCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'play',
@@ -29,33 +28,11 @@ module.exports = class RPSCommand extends Command {
     }
 
     run(message, {game, gameInput}) {
-        let responseMessage = 'I drew ';
+        let responseMessage = '';
         if (game == 'rps') {
 
-            let botResponse = ['rock', 'paper', 'scissors'];
-            let gameOutput = ['Tie!', 'I win!', 'I lose ;-;', 'Is that what a Spock is?'];
-            let decision = Math.floor(Math.random() * 3);
-            let gameDecision = 0;
-
-            switch (gameInput) {
-                case 'rock':
-                    if (botResponse[decision] == 'rock') gameDecision = 0;
-                    else if (botResponse[decision] == 'paper') gameDecision = 1;
-                    else if (botResponse[decision] == 'scissors') gameDecision = 2;
-                    break;
-                case 'paper':
-                    if (botResponse[decision] == 'paper') gameDecision = 0;
-                    else if (botResponse[decision] == 'scissors') gameDecision = 1; 
-                    else if (botResponse[decision] == 'rock') gameDecision = 2;
-                    break;
-                case 'scissors':
-                    if (botResponse[decision] == 'scissors') gameDecision = 0;
-                    else if (botResponse[decision] == 'rock') gameDecision = 1;
-                    else if (botResponse[decision] == 'paper') gameDecision = 2;
-                    break;
-                default:
-                    gameDecision = 3;
-            }
+            RPSGame rps = new RPSGame();
+            responseMessage += rps.getDecision(gameInput);
 
             setTimeout(function () {
                 message.say(responseMessage + botResponse[decision] + ". " + gameOutput[gameDecision]);
