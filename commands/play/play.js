@@ -1,11 +1,11 @@
 const {Command} = require('discord.js-commando');
-const {RPSGame} = require('./rps.js');
+const {RPSGame} = require('./games/rps.js');
 
 module.exports = class PlayCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'play',
-            group: 'play',
+            group: 'interact',
             memberName: 'play',
             description: 'Play with Stubbs',
             examples: ['!play <game>'],

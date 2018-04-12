@@ -5,7 +5,7 @@ module.exports = class FeedCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'feed',
-            group: 'play',
+            group: 'interact',
             memberName: 'feed',
             description: 'Feed Stubbs',
             examples: ['feed <food>'],
