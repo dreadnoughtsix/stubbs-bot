@@ -19,6 +19,16 @@ module.exports = class FeedCommand extends Command {
                 }
             ]
         });
+
+        this.VALID_FOODS = [
+            'beef',
+            'chicken',
+            'chocolate',
+            'dog treats',
+            'food',
+            'french vanilla',
+            'pork',
+        ];
     }
 
     run(message, {food}) {
@@ -32,11 +42,15 @@ module.exports = class FeedCommand extends Command {
         } else if (!food) {
             returnMsg += 'Oh, you don\'t have any food for me? **-cries-**';
 
-        } else {
+        } else if (this.VALID_FOODS.indexOf(food.toLowerCase()) >= 0) {
             message.say('**-sniffs food-**');
             foodCount++;
             interval = 2000;
             returnMsg += 'I love ' + food + '! **-munch munch munch-**';
+        } else {
+            message.say('**-sniffs food-**');
+            interval = 1500;
+            returnMsg += 'Eww, what is that? **-runs away-**';
         }
 
         setTimeout(function() {
