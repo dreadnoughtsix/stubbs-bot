@@ -35,8 +35,7 @@ module.exports = class RPSGame {
     getDecision(playerInput) {
         const botChoice = Math.floor(Math.random() * 3);
 
-        let responseMsg = 'I drew ' + this.validMoves[botChoice] + '.';
-
+        let responseMsg = 'I drew ' + this.validMoves[botChoice] + '. ';
         // If the player's input is valid
         if (this.validMoves.indexOf(playerInput) >= 0) {
 
