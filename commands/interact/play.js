@@ -1,6 +1,7 @@
 const {Command} = require('discord.js-commando');
 const RPSGame = require('./games/rps.js');
 const FlipCoinGame = require('./games/coinflip.js');
+const DiceRollGame = require('./games/diceroll.js');
 
 module.exports = class PlayCommand extends Command {
     constructor(client) {
@@ -26,17 +27,22 @@ module.exports = class PlayCommand extends Command {
                 }
             ]
         });
+
+        this.RPS = new RPSGame();
+        this.DICE_ROLL = new DiceRollGame();
     }
 
     run(message, {game, gameInput}) {
         let responseMessage = '';
 
         if (game == 'rps') {
-            const rps = new RPSGame();
-            responseMessage += rps.getDecision(gameInput);
+            responseMessage += this.RPS.getDecision(gameInput);
 
         } else if (game == 'coinflip') {
             responseMessage += FlipCoinGame.getCoinFlip();
+
+        } else if (game == 'diceroll') {
+            responseMessage += this.DICE_ROLL.getRoll();
         }
         
         setTimeout(function () {
