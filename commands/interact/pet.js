@@ -5,7 +5,7 @@ module.exports = class PetCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'pet',
-            group: 'play',
+            group: 'interact',
             memberName: 'pet',
             description: 'Pet Stubbs',
             examples: ['pet']

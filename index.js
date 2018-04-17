@@ -11,7 +11,7 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['play', 'Play with Stubbs']
+        ['interact', 'Interact with Stubbs']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
